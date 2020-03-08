@@ -19,7 +19,8 @@ export default function Product(props) {
           data={glasses}
           renderItem={glass => <Glass glass={glass} />}
           keyExtractor={(item, index) => index.toString()}
-          // onEndReached=
+          onEndReachedThreshold={8}
+          ListFooterComponent={<FooterList isLoading={isLoading}></FooterList>}
         />
       ) : (
         <View style={styles.loadingGlasses}>
@@ -61,6 +62,23 @@ function Glass(props) {
   );
 }
 
+function FooterList(props) {
+  const { isLoading } = props;
+  if (isLoading) {
+    return (
+      <View style={styles.loadingGlasses}>
+        <ActivityIndicator size="large"></ActivityIndicator>
+      </View>
+    );
+  } else {
+    return (
+      <View styles={styles.notFoundGlasses}>
+        <Text> Cargando colecciones</Text>
+      </View>
+    );
+  }
+}
+
 const styles = StyleSheet.create({
   loadingGlasses: {
     marginTop: 20,
@@ -80,8 +98,13 @@ const styles = StyleSheet.create({
   glassName: {
     fontWeight: "bold"
   },
+
   glassColeccion: {
     paddingTop: 2,
     color: "grey"
+  },
+  loaderGlasses: {
+    marginTop: 10,
+    marginBottom: 10
   }
 });
