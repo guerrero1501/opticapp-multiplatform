@@ -5,10 +5,9 @@ import {
   Text,
   FlatList,
   ActivityIndicator,
-  TouchableOpacity
+  TouchableOpacity,
+  Image
 } from "react-native";
-import { Image } from "react-native-expo-image-cache";
-import FastImage from "react-native-fast-image";
 
 export default function Product(props) {
   const { glasses, isLoading } = props;
@@ -41,11 +40,9 @@ function Glass(props) {
     <TouchableOpacity onPress={() => console.log("Ir a las gafas.")}>
       <View style={styles.viewGlass}>
         <View style={styles.viewGlassImage}>
-          <FastImage
-            resizeMode={FastImage.resizeMode.contain}
+          <Image
             source={{
-              uri: img1 ? img1 : "https://gph.is/1XRTmuh",
-              priority: FastImage.priority.normal
+              uri: img1 ? img1 : "https://gph.is/1XRTmuh"
             }}
             style={styles.imageGlass}
             PlaceholderContent={
