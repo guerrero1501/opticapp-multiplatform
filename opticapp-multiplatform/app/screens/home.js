@@ -1,5 +1,14 @@
 import React from "react";
-import { View, Text, Button, StyleSheet, ImageBackground } from "react-native";
+import {
+  View,
+  Text,
+  Button,
+  StyleSheet,
+  ImageBackground,
+  TouchableOpacity,
+  Image,
+  Dimensions
+} from "react-native";
 
 export default function Home({ navigation }) {
   return (
@@ -9,10 +18,19 @@ export default function Home({ navigation }) {
       source={require("../../assets/drawable-xxxhdpi/mainactimg.png")}
     >
       <View style={styles.buttonCatalogo}>
-        <Button
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Inventario", { tipo: "sol" })}
+        >
+          <Image
+            // style={{ width: Dimensions.get("window").width }}
+
+            source={require("../../assets/btmain1.png")}
+          />
+        </TouchableOpacity>
+        {/* <Button4
           title="Go to Catalogo"
           onPress={() => navigation.navigate("Catalog")}
-        />
+        /> */}
       </View>
       <View style={styles.buttonFormula}>
         <Button
