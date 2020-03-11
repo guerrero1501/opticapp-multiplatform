@@ -13,7 +13,7 @@ export default function Product(props) {
   const { glasses, isLoading } = props;
 
   return (
-    <View>
+    <View style={{ marginTop: 40 }}>
       {glasses ? (
         <FlatList
           data={glasses}

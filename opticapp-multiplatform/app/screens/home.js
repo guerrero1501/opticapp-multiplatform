@@ -9,48 +9,74 @@ import {
   Image,
   Dimensions
 } from "react-native";
+const { width, height } = Dimensions.get("window");
 
 export default function Home({ navigation }) {
   return (
     <ImageBackground
-      style={{ flex: 1 }}
-      //We are using online image to set background
+      style={styles.container}
       source={require("../../assets/drawable-xxxhdpi/mainactimg.png")}
     >
-      <View style={styles.buttonCatalogo}>
+      <View style={styles.buttonFormula}>
         <TouchableOpacity
+          style={styles.touchableCatalog}
           onPress={() => navigation.navigate("Inventario", { tipo: "sol" })}
         >
           <Image
-            // style={{ width: Dimensions.get("window").width }}
-
             source={require("../../assets/btmain1.png")}
+            style={styles.imageCatalog}
           />
         </TouchableOpacity>
-        {/* <Button4
-          title="Go to Catalogo"
-          onPress={() => navigation.navigate("Catalog")}
-        /> */}
-      </View>
-      <View style={styles.buttonFormula}>
-        <Button
-          title="Formula"
+        <TouchableOpacity
+          style={styles.touchableFormula}
           onPress={() => navigation.navigate("Inventario", { tipo: "sol" })}
-        />
+        >
+          <Image
+            source={require("../../assets/btmain2.png")}
+            style={styles.imageCatalog}
+          />
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    width: width,
+    height: height,
+    alignItems: "center",
+    justifyContent: "center",
+    flex: 1
+  },
   buttonFormula: {
     flex: 1,
     justifyContent: "flex-end",
-    marginBottom: 80
+    alignItems: "center"
   },
   buttonCatalogo: {
-    flex: 5,
-    justifyContent: "flex-end",
-    marginBottom: 0
+    marginTop: 400
+  },
+  imageCatalog: {
+    resizeMode: "center"
+  },
+  imageFormula: {
+    resizeMode: "center"
+  },
+  touchableCatalog: {
+    width: 150,
+    height: 45,
+    padding: 30,
+    marginBottom: 30,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  touchableFormula: {
+    width: 150,
+    height: 45,
+    padding: 30,
+    marginBottom: 50,
+    alignItems: "center",
+    justifyContent: "center"
   }
 });

@@ -10,7 +10,7 @@ export default function Inventario({ navigation, tipo }) {
   useEffect(() => {
     if (Loading) {
       console.log(typeGlass);
-      fetch(`https://www.softmild.com/api/v1/Opticapp/Inventario/${typeGlass}`)
+      fetch(`https://www.softmild.com/api/v1/Opticapp/Inventario/sol`)
         .then(res => res.json())
         .then(rta => {
           console.log({ rta });
