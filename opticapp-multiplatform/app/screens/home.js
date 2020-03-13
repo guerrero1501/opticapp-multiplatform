@@ -20,7 +20,7 @@ export default function Home({ navigation }) {
       <View style={styles.buttonFormula}>
         <TouchableOpacity
           style={styles.touchableCatalog}
-          onPress={() => navigation.navigate("Inventario", { tipo: "sol" })}
+          onPress={() => navigation.navigate("Catalog")}
         >
           <Image
             source={require("../../assets/btmain1.png")}
@@ -29,7 +29,7 @@ export default function Home({ navigation }) {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.touchableFormula}
-          onPress={() => navigation.navigate("Inventario", { tipo: "sol" })}
+          onPress={() => navigation.navigate("Inventario")}
         >
           <Image
             source={require("../../assets/btmain2.png")}

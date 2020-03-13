@@ -8,16 +8,15 @@ import {
   TouchableOpacity,
   Image
 } from "react-native";
-
+import { Glass as producto } from "../screens/glass";
 export default function Product(props) {
-  const { glasses, isLoading } = props;
-
+  const { glasses, isLoading, navigation } = props;
   return (
     <View style={{ marginTop: 40 }}>
       {glasses ? (
         <FlatList
           data={glasses}
-          renderItem={glass => <Glass glass={glass} />}
+          renderItem={glass => <Glass glass={glass} navigation={navigation} />}
           keyExtractor={(item, index) => index.toString()}
           onEndReachedThreshold={8}
           ListFooterComponent={<FooterList isLoading={isLoading}></FooterList>}
@@ -33,12 +32,12 @@ export default function Product(props) {
 }
 
 function Glass(props) {
-  const { glass } = props;
+  const { glass, navigation } = props;
   const { Referencia, Precio, img1, Coleccion, Color } = glass.item;
-
-  console.log(glass);
   return (
-    <TouchableOpacity onPress={() => console.log("Ir a las gafas.")}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("producto", { glass: glass.item })}
+    >
       <View style={styles.viewGlass}>
         <View style={styles.viewGlassImage}>
           <Image
