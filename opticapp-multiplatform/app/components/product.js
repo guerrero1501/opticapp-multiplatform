@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Image
 } from "react-native";
+import { Card, Button } from "react-native-elements";
 import { Glass as producto } from "../screens/glass";
 export default function Product(props) {
   const { glasses, isLoading, navigation } = props;
@@ -35,29 +36,50 @@ function Glass(props) {
   const { glass, navigation } = props;
   const { Referencia, Precio, img1, Coleccion, Color } = glass.item;
   return (
-    <TouchableOpacity
-      onPress={() => navigation.navigate("producto", { glass: glass.item })}
+    // <TouchableOpacity
+    //   onPress={() => navigation.navigate("producto", { glass: glass.item })}
+    // >
+    //   <View style={styles.viewGlass}>
+    //     <View style={styles.viewGlassImage}>
+    //       <Image
+    //         source={{
+    //           uri: img1 ? img1 : "https://gph.is/1XRTmuh"
+    //         }}
+    //         style={styles.imageGlass}
+    //         PlaceholderContent={
+    //           <ActivityIndicator color="fff"></ActivityIndicator>
+    //         }
+    //       />
+    //     </View>
+    //     <View style={{ paddingTop: 20 }}>
+    //       <Text style={styles.glassName}>{Referencia}</Text>
+    //       <Text style={styles.glassColeccion}>{Coleccion}</Text>
+    //       <Text style={styles.glassColeccion}>{Color}</Text>
+    //       <Text style={styles.glassColeccion}>{Precio}</Text>
+    //     </View>
+    //   </View>
+    // </TouchableOpacity>
+    <Card
+      image={{
+        uri: img1 ? img1 : "https://gph.is/1XRTmuh"
+      }}
+      imageProps={{ resizeMode: "cover" }}
     >
-      <View style={styles.viewGlass}>
-        <View style={styles.viewGlassImage}>
-          <Image
-            source={{
-              uri: img1 ? img1 : "https://gph.is/1XRTmuh"
-            }}
-            style={styles.imageGlass}
-            PlaceholderContent={
-              <ActivityIndicator color="fff"></ActivityIndicator>
-            }
-          />
-        </View>
-        <View style={{ paddingTop: 20 }}>
-          <Text style={styles.glassName}>{Referencia}</Text>
-          <Text style={styles.glassColeccion}>{Coleccion}</Text>
-          <Text style={styles.glassColeccion}>{Color}</Text>
-          <Text style={styles.glassColeccion}>{Precio}</Text>
-        </View>
-      </View>
-    </TouchableOpacity>
+      <Text style={{ marginBottom: 10, marginTop: 20 }} h2>
+        {Referencia}
+      </Text>
+      <Text style={styles.price} h4>
+        {Precio}
+      </Text>
+      <Text h6 style={styles.description}>
+        {Coleccion} {Color}
+      </Text>
+      <Button
+        type="clear"
+        title="Comprar Ahora"
+        onPress={() => navigation.navigate("producto", { glass: glass.item })}
+      />
+    </Card>
   );
 }
 
@@ -105,5 +127,18 @@ const styles = StyleSheet.create({
   loaderGlasses: {
     marginTop: 10,
     marginBottom: 10
+  },
+  name: {
+    color: "#5a647d",
+    fontWeight: "bold",
+    fontSize: 30
+  },
+  price: {
+    fontWeight: "bold",
+    marginBottom: 10
+  },
+  description: {
+    fontSize: 10,
+    color: "#c1c4cd"
   }
 });
