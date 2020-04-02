@@ -36,29 +36,6 @@ function Glass(props) {
   const { glass, navigation } = props;
   const { Referencia, Precio, img1, Coleccion, Color } = glass.item;
   return (
-    // <TouchableOpacity
-    //   onPress={() => navigation.navigate("producto", { glass: glass.item })}
-    // >
-    //   <View style={styles.viewGlass}>
-    //     <View style={styles.viewGlassImage}>
-    //       <Image
-    //         source={{
-    //           uri: img1 ? img1 : "https://gph.is/1XRTmuh"
-    //         }}
-    //         style={styles.imageGlass}
-    //         PlaceholderContent={
-    //           <ActivityIndicator color="fff"></ActivityIndicator>
-    //         }
-    //       />
-    //     </View>
-    //     <View style={{ paddingTop: 20 }}>
-    //       <Text style={styles.glassName}>{Referencia}</Text>
-    //       <Text style={styles.glassColeccion}>{Coleccion}</Text>
-    //       <Text style={styles.glassColeccion}>{Color}</Text>
-    //       <Text style={styles.glassColeccion}>{Precio}</Text>
-    //     </View>
-    //   </View>
-    // </TouchableOpacity>
     <Card
       image={{
         uri: img1 ? img1 : "https://gph.is/1XRTmuh"
@@ -76,7 +53,7 @@ function Glass(props) {
       </Text>
       <Button
         type="clear"
-        title="Comprar Ahora"
+        title="Ver detalles"
         onPress={() => navigation.navigate("producto", { glass: glass.item })}
       />
     </Card>
