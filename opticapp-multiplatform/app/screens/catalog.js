@@ -1,14 +1,13 @@
 import React from "react";
 import {
   View,
-  Text,
-  Button,
   StyleSheet,
   ImageBackground,
   TouchableOpacity,
   Image,
-  Dimensions
+  Dimensions,
 } from "react-native";
+import FitImage from "react-native-fit-image";
 const { width, height } = Dimensions.get("window");
 
 export default function Catalog({ navigation }) {
@@ -23,6 +22,7 @@ export default function Catalog({ navigation }) {
           onPress={() => navigation.navigate("Inventario", { tipo: "optica" })}
         >
           <Image
+            resizeMode="stretch"
             source={require("../../assets/catoft.png")}
             style={styles.imageCatalog}
           />
@@ -32,8 +32,9 @@ export default function Catalog({ navigation }) {
           onPress={() => navigation.navigate("Inventario", { tipo: "sol" })}
         >
           <Image
+            resizeMode="cover"
             source={require("../../assets/catsol.png")}
-            style={styles.imageCatalog}
+            style={{ ...styles.imageCatalog }}
           />
         </TouchableOpacity>
       </View>
@@ -45,31 +46,32 @@ const styles = StyleSheet.create({
   container: {
     width: width,
     height: height,
-    alignItems: "center",
+    alignItems: "stretch",
     justifyContent: "center",
-    flex: 1
+    flex: 5,
   },
   buttonFormula: {
-    flex: 1,
+    flex: 2.5,
     justifyContent: "flex-end",
-    alignItems: "center"
-  },
-  buttonCatalogo: {
-    marginTop: 400
+    alignItems: "center",
   },
   imageCatalog: {
-    resizeMode: "center"
+    resizeMode: "center",
+  },
+  buttonCatalogo: {
+    flex: 2.5,
+    marginTop: 400,
   },
   imageFormula: {
-    resizeMode: "center"
+    resizeMode: "center",
   },
   touchableCatalog: {
-    width: 150,
-    height: 45,
+    width: width * 0.3,
+    height: height * 0.25,
     padding: 30,
     marginBottom: 30,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   touchableFormula: {
     width: 150,
@@ -77,6 +79,6 @@ const styles = StyleSheet.create({
     padding: 30,
     marginBottom: 50,
     alignItems: "center",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 });

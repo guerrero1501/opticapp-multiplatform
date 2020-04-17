@@ -5,11 +5,8 @@ import {
   Text,
   FlatList,
   ActivityIndicator,
-  TouchableOpacity,
-  Image
 } from "react-native";
 import { Card, Button } from "react-native-elements";
-import { Glass as producto } from "../screens/glass";
 export default function Product(props) {
   const { glasses, isLoading, navigation } = props;
   return (
@@ -17,7 +14,9 @@ export default function Product(props) {
       {glasses ? (
         <FlatList
           data={glasses}
-          renderItem={glass => <Glass glass={glass} navigation={navigation} />}
+          renderItem={(glass) => (
+            <Glass glass={glass} navigation={navigation} />
+          )}
           keyExtractor={(item, index) => index.toString()}
           onEndReachedThreshold={8}
           ListFooterComponent={<FooterList isLoading={isLoading}></FooterList>}
@@ -38,7 +37,7 @@ function Glass(props) {
   return (
     <Card
       image={{
-        uri: img1 ? img1 : "https://gph.is/1XRTmuh"
+        uri: img1 ? img1 : "https://gph.is/1XRTmuh",
       }}
       imageProps={{ resizeMode: "cover" }}
     >
@@ -80,42 +79,42 @@ function FooterList(props) {
 const styles = StyleSheet.create({
   loadingGlasses: {
     marginTop: 20,
-    alignItems: "center"
+    alignItems: "center",
   },
   viewGlass: {
     flexDirection: "row",
-    margin: 10
+    margin: 10,
   },
   viewGlassImage: {
-    marginRight: 15
+    marginRight: 15,
   },
   imageGlass: {
     width: 170,
-    height: 170
+    height: 170,
   },
   glassName: {
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
 
   glassColeccion: {
     paddingTop: 2,
-    color: "grey"
+    color: "grey",
   },
   loaderGlasses: {
     marginTop: 10,
-    marginBottom: 10
+    marginBottom: 10,
   },
   name: {
     color: "#5a647d",
     fontWeight: "bold",
-    fontSize: 30
+    fontSize: 30,
   },
   price: {
     fontWeight: "bold",
-    marginBottom: 10
+    marginBottom: 10,
   },
   description: {
     fontSize: 10,
-    color: "#c1c4cd"
-  }
+    color: "#c1c4cd",
+  },
 });
